@@ -30,6 +30,10 @@ public class UserCircleDaoImpl implements UserCircleDao {
 			boolean result=checkUserInCircle(emailId, circleName);
 			if(result)
 			{
+				////Need extra properties in UserCircle Domain object and Table like
+				//date of joining
+				//status  :: subscribe/unsbscribe.
+				//set default values for the above properties.
 				UserCircle userCircle=new UserCircle();
 				userCircle.setCircleName(circleName);
 				userCircle.setEmailId(emailId);
@@ -60,6 +64,8 @@ public class UserCircleDaoImpl implements UserCircleDao {
 		}
 	}
 
+	
+	//do not delete, just unsubscribe
 	public boolean deleteUserFromCircle(String emailId, String circleName) {
 		try
 		{
@@ -102,6 +108,7 @@ public class UserCircleDaoImpl implements UserCircleDao {
 			String hql="from UserCircle where circleName= '" + circleName +"'";//select emailid
 			Query query =sessionFactory.getCurrentSession().createQuery(hql);
 			userCircleList=query.list();
+			//why to use loop.  In the query itself, you fetch only email ids.
 			for(UserCircle userCircle:userCircleList)
 			{
 				emailIdList.add(userCircle.getEmailId());
