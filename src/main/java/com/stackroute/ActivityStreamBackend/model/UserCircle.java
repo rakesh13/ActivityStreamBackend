@@ -12,6 +12,10 @@ import org.springframework.stereotype.Component;
 @Entity
 @Component
 public class UserCircle extends ResourceSupport implements Serializable{
+	
+	//Need extra properties like
+	//date of joining
+	//status  :: subscribe/unsbscribe.
 
 	@Id
 	@GeneratedValue
