@@ -37,6 +37,8 @@ public class MessageDaoImpl implements MessageDao{
 		
 	}
 
+	//You shoud reated the messages from UserMessage table.
+	//The parameter should not be senderEmailId.  It should be receiver email id.
 	public List<Message> getMyMessages(String emailId) {
 		return sessionFactory.getCurrentSession().createCriteria(Message.class).add(Restrictions.eq("senderEmailId", emailId)).list();
 	}
