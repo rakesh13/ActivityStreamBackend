@@ -37,6 +37,8 @@ public class UserMessageDaoImpl implements UserMessageDao{
 		
 	}
 
+	//how can get messageId??
+	//User should able to delete only messages received by him.
 	public boolean deleteMessage(int messageId) {
 		UserMessage userMessage=(UserMessage) sessionFactory.getCurrentSession().createCriteria(UserMessage.class).add(Restrictions.eq("messageId", messageId)).uniqueResult();
 		if(userMessage!=null)
@@ -50,6 +52,7 @@ public class UserMessageDaoImpl implements UserMessageDao{
 		}
 	}
 
+	//why sender email id?  I need to receive my messages( receiver email id)
 	public List<UserMessage> getMyMessages(String emailId) {
 		return sessionFactory.getCurrentSession().createCriteria(UserMessage.class).add(Restrictions.eq("senderEmailId", emailId)).list();
 		
