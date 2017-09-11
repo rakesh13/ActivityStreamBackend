@@ -66,7 +66,12 @@ public class CircleDaoImpl implements CircleDao{
 	public boolean deleteCircle(String emailId, String circleName) {
 		try
 		{
+			//Do you want to delete all ther circles created by particular user?
 			List<Circle> circles=getCircleByUser(emailId);
+			
+			//1)Only one row/record will exist with emailId and circleName.
+			//2)Only Admin should able to delete circle. need to cross check whole logged in ( in service project)
+			//before calling method.
 			
 			circles.forEach((Circle circle)->{
 				Circle circleByName=getCircleByName(circleName);
